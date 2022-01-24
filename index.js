@@ -2,16 +2,15 @@ const express = require("express");
 const app = express();
 
 app.set('view engine','ejs');
-
+app.use(express.static('public'));
 app.get("/",function(req,res){
-    var nome = "Victor";
-    var linguagem="php";
-    res.render("index",{
-        nome:nome,
-        linguagem:linguagem,
-        empresa:"Guia do Programador",
-        inscritos: 8000
-    });
+
+    res.render("index");
+});
+
+app.get("/perguntar",function(req,res){
+
+    res.render("perguntar");
 });
 
 app.listen(3000, function(erro){
