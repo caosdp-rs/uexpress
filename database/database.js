@@ -3,7 +3,14 @@ const Sequelize = require('sequelize');
     host: 'localhost',
     dialect: 'mysql'
 });*/
-const connection = new Sequelize('postgres://lldjdqimiipqro:fcc3491701967c8dfe3e1b5107dfb6f97c0572ecbc7467200db2895a364a93a1@ec2-3-227-149-67.compute-1.amazonaws.com:5432/d32u4tnv0uvmad') // Example for postgres
+const connection = new Sequelize('postgres://lldjdqimiipqro:fcc3491701967c8dfe3e1b5107dfb6f97c0572ecbc7467200db2895a364a93a1@ec2-3-227-149-67.compute-1.amazonaws.com:5432/d32u4tnv0uvmad',{
+    dialectOptions:{
+        ssl:{
+            rejectUnauthorized: false,
+        }
+    }
+}); 
+// Example for postgres
 /*const connection = new Sequelize('d32u4tnv0uvmad','lldjdqimiipqro','fcc3491701967c8dfe3e1b5107dfb6f97c0572ecbc7467200db2895a364a93a1',{
     host: 'ec2-3-227-149-67.compute-1.amazonaws.com',
     port:'5432',
