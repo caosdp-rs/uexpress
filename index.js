@@ -37,7 +37,7 @@ app.post("/salvarpergunta", (req,res) =>{
     });*/
     res.send("formulario recebido -" + titulo + "-" + descricao);
 })
-app.listen(3000, function(erro){
+app.listen(process.env.PORT || 3000, function(erro){
     if(erro){
         console.log("erro");
     }else{
