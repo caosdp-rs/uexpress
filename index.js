@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const connection = require('./database/database');
-const PerguntaModel = require("./database/Pergunta");
+//const connection = require('./database/database');
+//const PerguntaModel = require("./database/Pergunta");
 //database
 connection
     .authenticate()
@@ -18,9 +18,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.get("/",function(req,res){
-    PerguntaModel.findAll().then(perguntas => {
-        console.log(perguntas);
-    });
+    //PerguntaModel.findAll().then(perguntas => {
+    //    console.log(perguntas);
+    //});
     res.render("index");
 });
 app.get("/perguntar",(req,res)=> {
@@ -29,12 +29,13 @@ app.get("/perguntar",(req,res)=> {
 app.post("/salvarpergunta", (req,res) =>{
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-    PerguntaModel.create({
+   /* PerguntaModel.create({
         titulo:titulo,
         descricao:descricao
     }).then(()=>{
         res.redirect("/");
-    });
+    });*/
+    res.send("formulario recebido -" + titulo + "-" + descricao);
 })
 app.listen(3000, function(erro){
     if(erro){
